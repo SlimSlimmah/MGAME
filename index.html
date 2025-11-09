@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idle RPG - Character Creation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Character List View -->
+    <div id="characterList" class="character-list active">
+      <div class="card">
+        <h1>🎮 Idle RPG</h1>
+        <p class="subtitle">Select a character or create a new one</p>
+        
+        <div id="characterSlots"></div>
+        
+        <button class="btn-back" onclick="clearAllData()" style="margin-top: 1rem; background: rgba(239, 68, 68, 0.3); border: 1px solid rgba(239, 68, 68, 0.5);">
+          Clear All Data
+        </button>
+      </div>
+    </div>
+
+    <!-- Character Creation View -->
+    <div id="characterCreation" class="character-creation">
+      <div class="card">
+        <button class="btn-back" onclick="showCharacterList()">← Back</button>
+        
+        <h1>Create Character</h1>
+        <p class="subtitle">Choose your path</p>
+
+        <div class="form-group">
+          <label for="characterName">Character Name</label>
+          <input 
+            type="text" 
+            id="characterName" 
+            placeholder="Enter your hero's name..."
+            maxlength="20"
+          >
+          <div id="nameError" class="error">Please enter a character name</div>
+        </div>
+
+        <div class="form-group">
+          <label>Choose Your Class</label>
+          <div class="class-selection">
+            <div class="class-card" data-class="warrior" onclick="selectClass('warrior')">
+              <div class="class-icon">⚔️</div>
+              <div class="class-name">Warrior</div>
+              <div class="class-desc">High HP, melee damage</div>
+            </div>
+            
+            <div class="class-card" data-class="ranger" onclick="selectClass('ranger')">
+              <div class="class-icon">🏹</div>
+              <div class="class-name">Ranger</div>
+              <div class="class-desc">Balanced, ranged attacks</div>
+            </div>
+            
+            <div class="class-card" data-class="mage" onclick="selectClass('mage')">
+              <div class="class-icon">🔮</div>
+              <div class="class-name">Mage</div>
+              <div class="class-desc">High damage, low HP</div>
+            </div>
+          </div>
+          <div id="classError" class="error">Please select a class</div>
+        </div>
+
+        <button class="btn-create" onclick="createCharacter()">
+          Create Character
+        </button>
+      </div>
+    </div>
+
+    <!-- Game View -->
+    <div id="gameView" class="game-view">
+      <div class="card">
+        <button class="btn-back" onclick="showCharacterList()">← Character Select</button>
+        
+        <div class="game-header">
+          <div class="player-info">
+            <div class="player-icon" id="gamePlayerIcon">⚔️</div>
+            <div class="player-details">
+              <h2 id="gamePlayerName">Hero</h2>
+              <p id="gamePlayerClass">Warrior - Level 1</p>
+              <div class="player-stats-inline">
+                <span class="stat-display">💰 <span id="playerGold">0</span></span>
+                <span class="stat-display">⚔️ <span id="totalDamage">10</span></span>
+                <span class="stat-display">🛡️ <span id="totalDefense">0</span></span>
+                <span class="stat-display">❤️ <span id="totalMaxHP">100</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Progress (moved above tabs) -->
+        <div id="activityProgress" class="activity-progress" style="display: none;">
+          <div class="progress-header">
+            <span id="progressActivity">Gathering...</span>
+            <button class="btn-stop" onclick="stopGathering()">Stop</button>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="gatheringProgressBar"></div>
+          </div>
+          <div class="progress-text" id="progressText">0.0s / 5.0s</div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="game-tabs">
+          <button class="game-tab active" onclick="switchGameTab('skills')">Skills</button>
+          <button class="game-tab" onclick="switchGameTab('inventory')">Inventory</button>
+          <button class="game-tab" onclick="switchGameTab('equipment')">Equipment</button>
+          <button class="game-tab" onclick="switchGameTab('shop')">Shop</button>
+          <button class="game-tab" onclick="switchGameTab('combat')">Combat</button>
+        </div>
+
+        <!-- Skills Tab -->
+        <div id="skillsTab" class="game-tab-content active">
+          <!-- Skills Sub-tabs -->
+          <div class="skills-sub-tabs">
+            <button class="skills-sub-tab active" onclick="switchSkillsTab('gathering')">Gathering</button>
+            <button class="skills-sub-tab" onclick="switchSkillsTab('processing')">Processing</button>
+          </div>
+
+          <!-- Gathering Sub-tab -->
+          <div id="gatheringSubTab" class="skills-sub-content active">
+            <div class="skills-container">
+            
+            <!-- Woodcutting -->
+            <div class="skill-section collapsible">
+              <div class="skill-header" onclick="toggleSkillSection(this)">
+                <div class="skill-info">
+                  <span class="skill-icon">🪵</span>
+                  <div>
+                    <div class="skill-name">Woodcutting</div>
+                    <div class="skill-level">Level <span id="woodcuttingLevel">1</span></div>
+                  </div>
+                </div>
+                <div class="skill-xp">
+                  <div class="xp-text"><span id="woodcuttingXP">0</span> / <span id="woodcuttingXPNext">100</span> XP</div>
+                  <div class="xp-bar">
+                    <div class="xp-fill" id="woodcuttingXPBar" style="width: 0%"></div>
+                  </div>
+                </div>
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="activities">
+                <button class="activity-btn" onclick="startGathering('sticks')">
+                  <span class="activity-icon">🪵</span>
+                  <span class="activity-name">Gather Sticks</span>
+                  <span class="activity-time">5s</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Fishing -->
+            <div class="skill-section collapsible">
+              <div class="skill-header" onclick="toggleSkillSection(this)">
+                <div class="skill-info">
+                  <span class="skill-icon">🎣</span>
+                  <div>
+                    <div class="skill-name">Fishing</div>
+                    <div class="skill-level">Level <span id="fishingLevel">1</span></div>
+                  </div>
+                </div>
+                <div class="skill-xp">
+                  <div class="xp-text"><span id="fishingXP">0</span> / <span id="fishingXPNext">100</span> XP</div>
+                  <div class="xp-bar">
+                    <div class="xp-fill" id="fishingXPBar" style="width: 0%"></div>
+                  </div>
+                </div>
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="activities">
+                <button class="activity-btn" onclick="startGathering('minnows')">
+                  <span class="activity-icon">🐟</span>
+                  <span class="activity-name">Catch Minnows</span>
+                  <span class="activity-time">5s</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mining -->
+            <div class="skill-section collapsible">
+              <div class="skill-header" onclick="toggleSkillSection(this)">
+                <div class="skill-info">
+                  <span class="skill-icon">⛏️</span>
+                  <div>
+                    <div class="skill-name">Mining</div>
+                    <div class="skill-level">Level <span id="miningLevel">1</span></div>
+                  </div>
+                </div>
+                <div class="skill-xp">
+                  <div class="xp-text"><span id="miningXP">0</span> / <span id="miningXPNext">100</span> XP</div>
+                  <div class="xp-bar">
+                    <div class="xp-fill" id="miningXPBar" style="width: 0%"></div>
+                  </div>
+                </div>
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="activities">
+                <button class="activity-btn" onclick="startGathering('stones')">
+                  <span class="activity-icon">🪨</span>
+                  <span class="activity-name">Gather Stones</span>
+                  <span class="activity-time">5s</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Hunting -->
+            <div class="skill-section collapsible">
+              <div class="skill-header" onclick="toggleSkillSection(this)">
+                <div class="skill-info">
+                  <span class="skill-icon">🏹</span>
+                  <div>
+                    <div class="skill-name">Hunting</div>
+                    <div class="skill-level">Level <span id="huntingLevel">1</span></div>
+                  </div>
+                </div>
+                <div class="skill-xp">
+                  <div class="xp-text"><span id="huntingXP">0</span> / <span id="huntingXPNext">100</span> XP</div>
+                  <div class="xp-bar">
+                    <div class="xp-fill" id="huntingXPBar" style="width: 0%"></div>
+                  </div>
+                </div>
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="activities">
+                <button class="activity-btn" onclick="startGathering('rabbitSkin')">
+                  <span class="activity-icon">🐰</span>
+                  <span class="activity-name">Hunt Rabbit</span>
+                  <span class="activity-time">5s</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <!-- Processing Sub-tab -->
+          <div id="processingSubTab" class="skills-sub-content">
+            <div class="skills-container">
+          
+          <!-- Cooking -->
+          <div class="skill-section collapsible">
+            <div class="skill-header" onclick="toggleSkillSection(this)">
+              <div class="skill-info">
+                <span class="skill-icon">🍳</span>
+                <div>
+                  <div class="skill-name">Cooking</div>
+                  <div class="skill-level">Level <span id="cookingLevel">1</span></div>
+                </div>
+              </div>
+              <div class="skill-xp">
+                <div class="xp-text"><span id="cookingXP">0</span> / <span id="cookingXPNext">100</span> XP</div>
+                <div class="xp-bar">
+                  <div class="xp-fill" id="cookingXPBar" style="width: 0%"></div>
+                </div>
+              </div>
+              <span class="collapse-arrow">▼</span>
+            </div>
+            <div class="activities">
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('cookedMinnows')">
+                  <span class="activity-icon">🍖</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Cook Minnows</span>
+                    <span class="activity-recipe">Requires: 1 🐟</span>
+                  </div>
+                  <span class="activity-time">5s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="cookedMinnowsQty">Quantity:</label>
+                  <input type="number" id="cookedMinnowsQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Forging -->
+          <div class="skill-section collapsible">
+            <div class="skill-header" onclick="toggleSkillSection(this)">
+              <div class="skill-info">
+                <span class="skill-icon">🔨</span>
+                <div>
+                  <div class="skill-name">Forging</div>
+                  <div class="skill-level">Level <span id="forgingLevel">1</span></div>
+                </div>
+              </div>
+              <div class="skill-xp">
+                <div class="xp-text"><span id="forgingXP">0</span> / <span id="forgingXPNext">100</span> XP</div>
+                <div class="xp-bar">
+                  <div class="xp-fill" id="forgingXPBar" style="width: 0%"></div>
+                </div>
+              </div>
+              <span class="collapse-arrow">▼</span>
+            </div>
+            <div class="activities">
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('stoneSword')">
+                  <span class="activity-icon">⚔️</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Forge Stone Sword</span>
+                    <span class="activity-recipe">Requires: 1 🪵, 2 🪨</span>
+                  </div>
+                  <span class="activity-time">10s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="stoneSwordQty">Quantity:</label>
+                  <input type="number" id="stoneSwordQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('stonePickaxe')">
+                  <span class="activity-icon">⛏️</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Forge Stone Pickaxe</span>
+                    <span class="activity-recipe">Requires: 1 🪵, 2 🪨</span>
+                  </div>
+                  <span class="activity-time">10s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="stonePickaxeQty">Quantity:</label>
+                  <input type="number" id="stonePickaxeQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leatherworking -->
+          <div class="skill-section collapsible">
+            <div class="skill-header" onclick="toggleSkillSection(this)">
+              <div class="skill-info">
+                <span class="skill-icon">🧵</span>
+                <div>
+                  <div class="skill-name">Leatherworking</div>
+                  <div class="skill-level">Level <span id="leatherworkingLevel">1</span></div>
+                </div>
+              </div>
+              <div class="skill-xp">
+                <div class="xp-text"><span id="leatherworkingXP">0</span> / <span id="leatherworkingXPNext">100</span> XP</div>
+                <div class="xp-bar">
+                  <div class="xp-fill" id="leatherworkingXPBar" style="width: 0%"></div>
+                </div>
+              </div>
+              <span class="collapse-arrow">▼</span>
+            </div>
+            <div class="activities">
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('leather')">
+                  <span class="activity-icon">🟤</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Craft Leather</span>
+                    <span class="activity-recipe">Requires: 2 🐇</span>
+                  </div>
+                  <span class="activity-time">5s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="leatherQty">Quantity:</label>
+                  <input type="number" id="leatherQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('leatherHelmet')">
+                  <span class="activity-icon">🪖</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Craft Leather Helmet</span>
+                    <span class="activity-recipe">Requires: 2 🟤</span>
+                  </div>
+                  <span class="activity-time">8s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="leatherHelmetQty">Quantity:</label>
+                  <input type="number" id="leatherHelmetQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('leatherChestplate')">
+                  <span class="activity-icon">🦺</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Craft Leather Chestplate</span>
+                    <span class="activity-recipe">Requires: 4 🟤</span>
+                  </div>
+                  <span class="activity-time">10s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="leatherChestplateQty">Quantity:</label>
+                  <input type="number" id="leatherChestplateQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('leatherLeggings')">
+                  <span class="activity-icon">👖</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Craft Leather Leggings</span>
+                    <span class="activity-recipe">Requires: 3 🟤</span>
+                  </div>
+                  <span class="activity-time">8s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="leatherLeggingsQty">Quantity:</label>
+                  <input type="number" id="leatherLeggingsQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('leatherGloves')">
+                  <span class="activity-icon">🧤</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Craft Leather Gloves</span>
+                    <span class="activity-recipe">Requires: 1 🟤</span>
+                  </div>
+                  <span class="activity-time">6s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="leatherGlovesQty">Quantity:</label>
+                  <input type="number" id="leatherGlovesQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+              <div class="activity-with-quantity">
+                <button class="activity-btn" onclick="startProcessing('leatherBoots')">
+                  <span class="activity-icon">👢</span>
+                  <div class="activity-info">
+                    <span class="activity-name">Craft Leather Boots</span>
+                    <span class="activity-recipe">Requires: 2 🟤</span>
+                  </div>
+                  <span class="activity-time">6s</span>
+                </button>
+                <div class="quantity-selector">
+                  <label for="leatherBootsQty">Quantity:</label>
+                  <input type="number" id="leatherBootsQty" class="quantity-input" min="1" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+        </div>
+
+        <!-- Inventory Tab -->
+        <div id="inventoryTab" class="game-tab-content">
+          <div class="inventory-grid" id="inventoryGrid">
+            <!-- Inventory items will be populated here -->
+          </div>
+        </div>
+
+        <!-- Equipment Tab -->
+        <div id="equipmentTab" class="game-tab-content">
+          <div class="equipment-slots">
+            <div class="equipment-slot clickable" onclick="openEquipmentSelector('head')">
+              <div class="slot-label">🪖 Head</div>
+              <div class="slot-content" id="headSlotContent">
+                <div class="slot-empty">Click to equip</div>
+              </div>
+            </div>
+            <div class="equipment-slot clickable" onclick="openEquipmentSelector('chest')">
+              <div class="slot-label">🦺 Chest</div>
+              <div class="slot-content" id="chestSlotContent">
+                <div class="slot-empty">Click to equip</div>
+              </div>
+            </div>
+            <div class="equipment-slot clickable" onclick="openEquipmentSelector('legs')">
+              <div class="slot-label">👖 Legs</div>
+              <div class="slot-content" id="legsSlotContent">
+                <div class="slot-empty">Click to equip</div>
+              </div>
+            </div>
+            <div class="equipment-slot clickable" onclick="openEquipmentSelector('gloves')">
+              <div class="slot-label">🧤 Gloves</div>
+              <div class="slot-content" id="glovesSlotContent">
+                <div class="slot-empty">Click to equip</div>
+              </div>
+            </div>
+            <div class="equipment-slot clickable" onclick="openEquipmentSelector('boots')">
+              <div class="slot-label">👢 Boots</div>
+              <div class="slot-content" id="bootsSlotContent">
+                <div class="slot-empty">Click to equip</div>
+              </div>
+            </div>
+            <div class="equipment-slot clickable" onclick="openEquipmentSelector('weapon')">
+              <div class="slot-label">⚔️ Weapon</div>
+              <div class="slot-content" id="weaponSlotContent">
+                <div class="slot-empty">Click to equip</div>
+              </div>
+            </div>
+            <div class="equipment-slot clickable" onclick="openEquipmentSelector('tool')">
+              <div class="slot-label">🛠️ Tool</div>
+              <div class="slot-content" id="toolSlotContent">
+                <div class="slot-empty">Click to equip</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipment Selector Modal -->
+        <div id="equipmentModal" class="modal" onclick="closeEquipmentModal()">
+          <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+              <h3 id="modalTitle">Select Equipment</h3>
+              <button class="modal-close" onclick="closeEquipmentModal()">×</button>
+            </div>
+            <div class="modal-body" id="equipmentModalBody">
+              <!-- Equipment options will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Shop Tab -->
+        <div id="shopTab" class="game-tab-content">
+          <h3 class="tab-title">🏪 Shop</h3>
+          <p style="text-align: center; margin-bottom: 1.5rem; opacity: 0.9;">Sell your items for gold</p>
+          <div class="inventory-grid" id="shopGrid">
+            <!-- Shop items will be populated here -->
+          </div>
+        </div>
+
+        <!-- Combat Tab -->
+        <div id="combatTab" class="game-tab-content">
+          <h3 class="tab-title">⚔️ Combat</h3>
+          
+          <!-- Combat Start Screen -->
+          <div id="combatStartScreen" style="text-align: center; padding: 2rem;">
+            <p style="margin-bottom: 1.5rem; opacity: 0.9;">Venture into the wilderness to battle monsters and earn rewards!</p>
+            <button class="btn-create" onclick="startCombat()" style="max-width: 300px; margin: 0 auto;">
+              🌲 Explore Wilderness
+            </button>
+          </div>
+
+          <!-- Active Combat Screen -->
+          <div id="combatActiveScreen" style="display: none;">
+            <!-- Combat Stats Display -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+              <!-- Player Stats -->
+              <div style="background: rgba(34, 197, 94, 0.1); border: 2px solid rgba(34, 197, 94, 0.3); border-radius: 0.75rem; padding: 1rem;">
+                <div style="text-align: center; margin-bottom: 0.5rem;">
+                  <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛡️</div>
+                  <div style="font-weight: 700; font-size: 1.125rem;" id="combatPlayerName">Hero</div>
+                  <div style="font-size: 0.875rem; opacity: 0.8;">Level <span id="combatPlayerLevel">1</span></div>
+                </div>
+                <div style="margin-bottom: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                    <span>HP</span>
+                    <span><span id="combatPlayerHP">100</span> / <span id="combatPlayerMaxHP">100</span></span>
+                  </div>
+                  <div style="height: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 1rem; overflow: hidden;">
+                    <div id="combatPlayerHPBar" style="height: 100%; background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%); width: 100%; transition: width 0.3s;"></div>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem; font-size: 0.875rem; justify-content: center;">
+                  <span>⚔️ <span id="combatPlayerDamage">10</span></span>
+                  <span>🛡️ <span id="combatPlayerDefense">0</span></span>
+                </div>
+              </div>
+
+              <!-- Enemy Stats -->
+              <div style="background: rgba(239, 68, 68, 0.1); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 0.75rem; padding: 1rem;">
+                <div style="text-align: center; margin-bottom: 0.5rem;">
+                  <div style="font-size: 2rem; margin-bottom: 0.5rem;" id="combatEnemyIcon">👹</div>
+                  <div style="font-weight: 700; font-size: 1.125rem;" id="combatEnemyName">Goblin</div>
+                  <div style="font-size: 0.875rem; opacity: 0.8;">Level <span id="combatEnemyLevel">1</span></div>
+                </div>
+                <div style="margin-bottom: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 0.25rem;">
+                    <span>HP</span>
+                    <span><span id="combatEnemyHP">50</span> / <span id="combatEnemyMaxHP">50</span></span>
+                  </div>
+                  <div style="height: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 1rem; overflow: hidden;">
+                    <div id="combatEnemyHPBar" style="height: 100%; background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%); width: 100%; transition: width 0.3s;"></div>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 0.5rem; font-size: 0.875rem; justify-content: center;">
+                  <span>⚔️ <span id="combatEnemyDamage">5</span></span>
+                  <span>🛡️ <span id="combatEnemyDefense">0</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Combat Log -->
+            <div style="background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 0.75rem; padding: 1rem; margin-bottom: 1.5rem; min-height: 150px; max-height: 150px; overflow-y: auto;" id="combatLog">
+              <div style="text-align: center; opacity: 0.7; font-size: 0.875rem;">Combat log will appear here...</div>
+            </div>
+
+            <!-- Attack Progress Bars -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+              <!-- Player Attack -->
+              <div>
+                <div style="font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem; color: #22c55e;">Your Attack</div>
+                <div style="height: 30px; background: rgba(0, 0, 0, 0.3); border-radius: 1rem; overflow: hidden;">
+                  <div id="combatPlayerAttackBar" style="height: 100%; background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%); width: 0%; transition: width 0.1s linear;"></div>
+                </div>
+              </div>
+
+              <!-- Enemy Attack -->
+              <div>
+                <div style="font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem; color: #ef4444;">Enemy Attack</div>
+                <div style="height: 30px; background: rgba(0, 0, 0, 0.3); border-radius: 1rem; overflow: hidden;">
+                  <div id="combatEnemyAttackBar" style="height: 100%; background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%); width: 0%; transition: width 0.1s linear;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Combat Stats -->
+            <div style="text-align: center; margin-bottom: 1rem;">
+              <div style="font-size: 0.875rem; opacity: 0.8;">
+                Enemies Defeated: <span style="font-weight: 700; color: #22c55e;" id="combatVictories">0</span>
+              </div>
+            </div>
+
+            <!-- Retreat Button -->
+            <button class="btn-stop" onclick="retreatFromCombat()" style="width: 100%;">
+              Retreat to Safety
+            </button>
+          </div>
+
+          <!-- Combat Victory/Defeat Screen -->
+          <div id="combatResultScreen" style="display: none; text-align: center; padding: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;" id="combatResultIcon">💀</div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;" id="combatResultTitle">Defeated!</h3>
+            <div style="margin-bottom: 1.5rem; opacity: 0.9;" id="combatResultMessage">
+              You were defeated by a powerful enemy.
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 0.75rem; padding: 1rem; margin-bottom: 1.5rem;">
+              <div style="font-weight: 700; margin-bottom: 0.5rem;">Expedition Summary</div>
+              <div style="font-size: 0.875rem;">
+                <div>Enemies Defeated: <span style="color: #22c55e;" id="resultVictories">0</span></div>
+                <div>Gold Earned: <span style="color: #f59e0b;" id="resultGold">0</span> 💰</div>
+              </div>
+            </div>
+            <button class="btn-create" onclick="resetCombat()" style="max-width: 300px; margin: 0 auto;">
+              Return to Safety
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
