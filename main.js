@@ -8,12 +8,12 @@ import { currentActivity } from './game-state.js';
 import { renderCharacterSlots } from './ui.js';
 import { processCombatTick } from './combat.js';
 import { combatState } from './game-state.js';
-
-// Import functions that need to be globally accessible
 import { selectClass, createCharacter, playCharacter, deleteCharacter } from './character.js';
-import { showCharacterList, showCharacterCreation, switchGameTab, switchSkillsTab, toggleSkillSection, openEquipmentSelector, closeEquipmentModal } from './ui.js';
+import { showCharacterList, showCharacterCreation, switchGameTab, switchSkillsTab, toggleSkillSection, openEquipmentSelector, closeEquipmentModal, updateEquipmentUI, updateInventoryUI, updatePlayerStats } from './ui.js';
 import { startGathering, startProcessing, stopGathering } from './skills.js';
 import { startCombat, retreatFromCombat, resetCombat } from './combat.js';
+import { equipItemFromModal, unequipItemFromModal } from './equipment.js';
+import { sellItem, sellEquipmentItem } from './shop.js';
 
 // Make functions globally accessible for onclick handlers
 window.selectClass = selectClass;
@@ -30,6 +30,13 @@ window.startProcessing = startProcessing;
 window.stopGathering = stopGathering;
 window.openEquipmentSelector = openEquipmentSelector;
 window.closeEquipmentModal = closeEquipmentModal;
+window.equipItemFromModal = equipItemFromModal;
+window.unequipItemFromModal = unequipItemFromModal;
+window.updateEquipmentUI = updateEquipmentUI;
+window.updateInventoryUI = updateInventoryUI;
+window.updatePlayerStats = updatePlayerStats;
+window.sellItem = sellItem;
+window.sellEquipmentItem = sellEquipmentItem;
 window.startCombat = startCombat;
 window.retreatFromCombat = retreatFromCombat;
 window.resetCombat = resetCombat;
