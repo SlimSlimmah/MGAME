@@ -95,9 +95,9 @@ export function createCharacter() {
   });
   
   // Show character list
-  import('./ui.js').then(({ showCharacterList }) => {
-    showCharacterList();
-  });
+  if (window.showCharacterList) {
+    window.showCharacterList();
+  }
 }
 
 // Play with a character
@@ -189,9 +189,9 @@ export function deleteCharacter(characterId, event) {
     }
     
     saveGame();
-    import('./ui.js').then(({ renderCharacterSlots }) => {
-      renderCharacterSlots();
-    });
+    if (window.renderCharacterSlots) {
+      window.renderCharacterSlots();
+    }
   }
 }
 

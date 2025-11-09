@@ -1,7 +1,7 @@
 // UI management and display functions
 
 import { CLASS_INFO, GATHERING_ACTIVITIES, PROCESSING_ACTIVITIES, RARITY_TIERS, EQUIPMENT_STATS } from './constants.js';
-import { gameData, activeGameTab, activeSkillsTab, setActiveGameTab, setActiveSkillsTab, currentActivity } from './game-state.js';
+import { gameData, activeGameTab, activeSkillsTab, setActiveGameTab, setActiveSkillsTab, currentActivity, combatState } from './game-state.js';
 import { getCurrentCharacter } from './character.js';
 import { calculateTotalStats, calculateTotalMaxHP } from './equipment.js';
 import { countItemsInInventory } from './inventory.js';
@@ -14,9 +14,9 @@ import { equipItemFromModal, unequipItemFromModal } from './equipment.js';
 // Show character list
 export function showCharacterList() {
   // Save current character's activity state before leaving
-  import('./skills.js').then(({ saveCharacterActivity }) => {
-    saveCharacterActivity();
-  });
+  if (window.saveCharacterActivity) {
+    window.saveCharacterActivity();
+  }
   
   document.getElementById('characterList').classList.add('active');
   document.getElementById('characterCreation').classList.remove('active');
@@ -42,11 +42,8 @@ export function renderCharacterSlots() {
     const classInfo = CLASS_INFO[character.class];
     const slot = document.createElement('div');
     slot.className = 'char-slot';
-    slot.onclick = () => {
-      import('./character.js').then(({ playCharacter }) => {
-        playCharacter(character.id);
-      });
-    };
+    // Use global window function instead of import
+    slot.onclick = () => window.playCharacter(character.id);
     
     let activityIndicator = '';
     if (character.currentActivity) {
@@ -64,9 +61,7 @@ export function renderCharacterSlots() {
     deleteBtn.textContent = '🗑️';
     deleteBtn.onclick = (e) => {
       e.stopPropagation();
-      import('./character.js').then(({ deleteCharacter }) => {
-        deleteCharacter(character.id, e);
-      });
+      window.deleteCharacter(character.id, e);
     };
     
     slot.innerHTML = `
@@ -96,7 +91,8 @@ export function renderCharacterSlots() {
   for (let i = 0; i < remainingSlots; i++) {
     const slot = document.createElement('div');
     slot.className = 'char-slot empty';
-    slot.onclick = showCharacterCreation;
+    // Use global window function
+    slot.onclick = () => window.showCharacterCreation();
     slot.innerHTML = `
       <div>
         <div style="font-size: 2rem; margin-bottom: 0.5rem;">➕</div>
@@ -180,14 +176,10 @@ export function switchGameTab(tab) {
   } else if (tab === 'shop') {
     updateShopUI();
   } else if (tab === 'combat') {
-    import('./combat.js').then(({ resetCombat }) => {
-      import('./game-state.js').then(({ combatState }) => {
-        // Reset combat screen if not active
-        if (!combatState.active) {
-          resetCombat();
-        }
-      });
-    });
+    // Reset combat screen if not active
+    if (combatState && !combatState.active && window.resetCombat) {
+      window.resetCombat();
+    }
   }
 }
 
