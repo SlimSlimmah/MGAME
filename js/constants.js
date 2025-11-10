@@ -152,13 +152,13 @@ export const STATS_PER_RARITY = {
 };
 
 export const ENEMY_TYPES = [
-  { name: 'Goblin', icon: '👹', hpMultiplier: 1.0, damageMultiplier: 0.8, defenseMultiplier: 0.5, goldReward: 5 },
-  { name: 'Wolf', icon: '🐺', hpMultiplier: 0.9, damageMultiplier: 1.0, defenseMultiplier: 0.3, goldReward: 6 },
-  { name: 'Orc', icon: '👺', hpMultiplier: 1.3, damageMultiplier: 1.0, defenseMultiplier: 0.8, goldReward: 8 },
-  { name: 'Troll', icon: '🧌', hpMultiplier: 1.5, damageMultiplier: 0.9, defenseMultiplier: 1.0, goldReward: 10 },
-  { name: 'Skeleton', icon: '💀', hpMultiplier: 0.8, damageMultiplier: 1.1, defenseMultiplier: 0.4, goldReward: 7 },
-  { name: 'Ogre', icon: '👹', hpMultiplier: 1.7, damageMultiplier: 1.2, defenseMultiplier: 1.2, goldReward: 12 },
-  { name: 'Dragon', icon: '🐉', hpMultiplier: 2.0, damageMultiplier: 1.5, defenseMultiplier: 1.5, goldReward: 20 }
+  { name: 'Goblin', icon: '', hpMultiplier: 1.0, damageMultiplier: 0.8, defenseMultiplier: 0.5, goldReward: 5 },
+  { name: 'Wolf', icon: '', hpMultiplier: 0.9, damageMultiplier: 1.0, defenseMultiplier: 0.3, goldReward: 6 },
+  { name: 'Orc', icon: '', hpMultiplier: 1.3, damageMultiplier: 1.0, defenseMultiplier: 0.8, goldReward: 8 },
+  { name: 'Troll', icon: '', hpMultiplier: 1.5, damageMultiplier: 0.9, defenseMultiplier: 1.0, goldReward: 10 },
+  { name: 'Skeleton', icon: '', hpMultiplier: 0.8, damageMultiplier: 1.1, defenseMultiplier: 0.4, goldReward: 7 },
+  { name: 'Ogre', icon: '', hpMultiplier: 1.7, damageMultiplier: 1.2, defenseMultiplier: 1.2, goldReward: 12 },
+  { name: 'Dragon', icon: '', hpMultiplier: 2.0, damageMultiplier: 1.5, defenseMultiplier: 1.5, goldReward: 20 }
 ];
 
 export const EQUIPMENT_STATS = {
