@@ -60,50 +60,50 @@ export const RARITY_TIERS = {
 export const STAT_DEFINITIONS = {
   strength: {
     name: 'Strength',
-    icon: '💪',
+    icon: '',
     description: 'Increases damage'
   },
   agility: {
     name: 'Agility',
-    icon: '⚡',
+    icon: '',
     description: 'Increases dodge and crit chance'
   },
   intelligence: {
     name: 'Intelligence',
-    icon: '🧠',
+    icon: '',
     description: 'Increases crit damage'
   },
   maxHealth: {
     name: 'Max Health',
-    icon: '❤️',
+    icon: '',
     description: 'Increases maximum HP'
   },
   dodge: {
     name: 'Dodge',
-    icon: '🌀',
+    icon: '',
     description: 'Chance to avoid attacks',
     isPercentage: true
   },
   critChance: {
     name: 'Crit Chance',
-    icon: '✨',
+    icon: '',
     description: 'Chance to deal critical damage',
     isPercentage: true
   },
   critDamage: {
     name: 'Crit Damage',
-    icon: '💥',
+    icon: '',
     description: 'Critical hit damage multiplier',
     isPercentage: true
   },
   lifeOnHit: {
     name: 'Life on Hit',
-    icon: '💚',
+    icon: '',
     description: 'HP recovered per attack'
   },
   block: {
     name: 'Block',
-    icon: '🛡️',
+    icon: '',
     description: 'Chance to block attacks',
     isPercentage: true
   }
