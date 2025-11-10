@@ -182,8 +182,8 @@ export const GATHERING_ACTIVITIES = {
     name: 'Gather Sticks',
     skill: 'woodcutting',
     duration: 5,
-    icon: '🪵',
-    resourceIcon: '🪵',
+    icon: '<img src="assets/sticks.png" height="24" width="24">',
+    resourceIcon: '<img src="assets/sticks.png" height="24" width="24">',
     resourceName: 'Sticks',
     xpGain: 10,
     sellValue: 1
