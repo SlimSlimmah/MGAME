@@ -595,6 +595,7 @@ input[type="text"]::placeholder {
 
 .activity-name {
   font-weight: 600;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
 }
 
 .activity-recipe {
