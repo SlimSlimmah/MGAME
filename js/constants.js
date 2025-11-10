@@ -3,21 +3,21 @@
 export const CLASS_INFO = {
   warrior: {
     name: 'Warrior',
-    icon: '<img src="assets/warrior.png">',
+    icon: '',
     baseHP: 150,
     baseDamage: 12,
     description: 'High HP, melee damage'
   },
   ranger: {
     name: 'Ranger',
-    icon: '<img src="assets/ranger.png">',
+    icon: '',
     baseHP: 100,
     baseDamage: 15,
     description: 'Balanced, ranged attacks'
   },
   mage: {
     name: 'Mage',
-    icon: '<img src="assets/mage.png">',
+    icon: '',
     baseHP: 80,
     baseDamage: 20,
     description: 'High damage, low HP'
