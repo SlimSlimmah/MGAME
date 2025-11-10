@@ -276,8 +276,8 @@ export function updateInventoryUI() {
       
       if (finalDamage > 0 || finalDefense > 0) {
         statsHtml = '<div style="font-size: 0.75rem; margin-top: 0.25rem; opacity: 0.8;">';
-        if (finalDamage > 0) statsHtml += `⚔️ ${finalDamage} `;
-        if (finalDefense > 0) statsHtml += `🛡️ ${finalDefense}`;
+        if (finalDamage > 0) statsHtml += `<img src="assets/attack.png" height="16" width="16"> ${finalDamage} `;
+        if (finalDefense > 0) statsHtml += `<img src="assets/defense.png" height="16" width="16"> ${finalDefense}`;
         statsHtml += '</div>';
       }
     }
@@ -329,8 +329,8 @@ export function updateEquipmentUI() {
         const finalDefense = Math.ceil(stats.defense * multiplier);
         
         let statsText = '';
-        if (finalDamage > 0) statsText += `⚔️ ${finalDamage} `;
-        if (finalDefense > 0) statsText += `🛡️ ${finalDefense}`;
+        if (finalDamage > 0) statsText += `<img src="assets/attack.png" height="16" width="16"> ${finalDamage} `;
+        if (finalDefense > 0) statsText += `<img src="assets/defense.png" height="16" width="16"> ${finalDefense}`;
         
         slotElement.innerHTML = `
           <div class="equipped-item" style="border: 2px solid ${rarityInfo.color}; padding: 0.5rem; border-radius: 0.5rem;">
@@ -402,8 +402,8 @@ export function openEquipmentSelector(slotType) {
       const finalDefense = Math.ceil(stats.defense * multiplier);
       
       let statsText = '';
-      if (finalDamage > 0) statsText += `⚔️ ${finalDamage} `;
-      if (finalDefense > 0) statsText += `🛡️ ${finalDefense}`;
+      if (finalDamage > 0) statsText += `<img src="assets/attack.png" height="16" width="16"> ${finalDamage} `;
+      if (finalDefense > 0) statsText += `<img src="assets/defense.png" height="16" width="16"> ${finalDefense}`;
       
       content += `
         <div class="modal-equipment-item ${isEquipped ? 'equipped' : ''}" 
@@ -478,7 +478,7 @@ export function updateShopUI() {
       <div class="inventory-item-icon">${activity.resourceIcon}</div>
       <div class="inventory-item-name">${activity.resourceName}</div>
       <div class="inventory-item-count">×${count}</div>
-      <div style="color: #f59e0b; font-size: 0.875rem; font-weight: 600; margin-top: 0.25rem;">💰 ${sellValue} each</div>
+      <div style="color: #f59e0b; font-size: 0.875rem; font-weight: 600; margin-top: 0.25rem;"><img src="assets/money.png" height="16" width="16"> ${sellValue} each</div>
     `;
     itemDiv.onmouseenter = () => itemDiv.style.transform = 'translateY(-2px)';
     itemDiv.onmouseleave = () => itemDiv.style.transform = '';
@@ -515,8 +515,8 @@ export function updateShopUI() {
       
       if (finalDamage > 0 || finalDefense > 0) {
         statsHtml = '<div style="font-size: 0.75rem; margin-top: 0.25rem; opacity: 0.8;">';
-        if (finalDamage > 0) statsHtml += `⚔️ ${finalDamage} `;
-        if (finalDefense > 0) statsHtml += `🛡️ ${finalDefense}`;
+        if (finalDamage > 0) statsHtml += `<img src="assets/attack.png" height="16" width="16"> ${finalDamage} `;
+        if (finalDefense > 0) statsHtml += `<img src="assets/defense.png" height="16" width="16"> ${finalDefense}`;
         statsHtml += '</div>';
       }
     }
@@ -531,7 +531,7 @@ export function updateShopUI() {
       ${rarityNameHtml}
       ${statsHtml}
       ${getItemStatsHTML(item)}
-      <div style="color: #f59e0b; font-size: 0.875rem; font-weight: 600; margin-top: 0.25rem;">💰 ${sellValue}</div>
+      <div style="color: #f59e0b; font-size: 0.875rem; font-weight: 600; margin-top: 0.25rem;"><img src="assets/money.png" height="16" width="16"> ${sellValue}</div>
     `;
     itemDiv.onmouseenter = () => itemDiv.style.transform = 'translateY(-2px)';
     itemDiv.onmouseleave = () => itemDiv.style.transform = '';
