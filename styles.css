@@ -61,7 +61,7 @@ label {
 input[type="text"] {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0rem;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
@@ -88,7 +88,7 @@ input[type="text"]::placeholder {
 
 .class-card {
   background: rgba(255, 255, 255, 0.1);
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0rem;
   padding: 1.5rem 1rem;
   text-align: center;
@@ -182,7 +182,7 @@ input[type="text"]::placeholder {
 
 .char-slot {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0rem;
   padding: 1.25rem;
   margin-bottom: 1rem;
@@ -461,7 +461,7 @@ input[type="text"]::placeholder {
 
 .skill-section {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0rem;
   padding: 1rem;
   transition: all 0.3s;
@@ -558,7 +558,7 @@ input[type="text"]::placeholder {
   background-image: 
     linear-gradient(180deg, #3f3f3f 75%, #2f2f2f 100%),
     url('assets/button.png');
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0rem;
   color: #fff;
   font-weight: 600;
@@ -649,7 +649,7 @@ input[type="text"]::placeholder {
 /* Activity Progress */
 .activity-progress {
   background: rgba(255, 255, 255, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 0rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -714,7 +714,7 @@ input[type="text"]::placeholder {
 
 .inventory-item {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0rem;
   padding: 1rem;
   text-align: center;
@@ -752,7 +752,7 @@ input[type="text"]::placeholder {
 
 .equipment-slot {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0rem;
   padding: 1.5rem;
   text-align: center;
@@ -835,7 +835,7 @@ input[type="text"]::placeholder {
 
 .equipment-item {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0rem;
   padding: 1rem;
   text-align: center;
@@ -887,7 +887,7 @@ input[type="text"]::placeholder {
   background: rgba(20, 20, 20, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 0rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   max-width: 500px;
   width: 90%;
   max-height: 80vh;
@@ -940,7 +940,7 @@ input[type="text"]::placeholder {
 
 .modal-equipment-item {
   background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0rem;
   padding: 1rem;
   text-align: center;
