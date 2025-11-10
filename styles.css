@@ -25,7 +25,7 @@ body {
 .card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border-radius: 1rem;
+  border-radius: 0rem;
   padding: 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -62,7 +62,7 @@ input[type="text"] {
   width: 100%;
   padding: 0.75rem;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   font-size: 1rem;
@@ -89,7 +89,7 @@ input[type="text"]::placeholder {
 .class-card {
   background: rgba(255, 255, 255, 0.1);
   border: 3px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1.5rem 1rem;
   text-align: center;
   cursor: pointer;
@@ -131,7 +131,7 @@ input[type="text"]::placeholder {
   padding: 1rem;
   background: linear-gradient(135deg, #3a3a3a 0%, #1a1a1a 100%);
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   color: #fff;
   font-size: 1.125rem;
   font-weight: 700;
@@ -183,7 +183,7 @@ input[type="text"]::placeholder {
 .char-slot {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1.25rem;
   margin-bottom: 1rem;
   cursor: pointer;
@@ -246,7 +246,7 @@ input[type="text"]::placeholder {
   background: rgba(255, 255, 255, 0.2);
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -267,7 +267,7 @@ input[type="text"]::placeholder {
   background: rgba(239, 68, 68, 0.3);
   border: 1px solid rgba(239, 68, 68, 0.5);
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   color: #fff;
   font-size: 0.875rem;
   cursor: pointer;
@@ -306,7 +306,7 @@ input[type="text"]::placeholder {
 .game-header {
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -350,7 +350,7 @@ input[type="text"]::placeholder {
 .game-content {
   background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   text-align: center;
   min-height: 300px;
   display: flex;
@@ -462,7 +462,7 @@ input[type="text"]::placeholder {
 .skill-section {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1rem;
   transition: all 0.3s;
 }
@@ -474,7 +474,7 @@ input[type="text"]::placeholder {
 
 .skill-section.collapsible .skill-header:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.5rem;
+  border-radius: 0rem;
 }
 
 .collapse-arrow {
@@ -535,7 +535,7 @@ input[type="text"]::placeholder {
   height: 8px;
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(48, 48, 48, 0.5);
-  border-radius: 1rem;
+  border-radius: 0rem;
   overflow: hidden;
 }
 
@@ -560,7 +560,7 @@ input[type="text"]::placeholder {
     linear-gradient(180deg, #3f3f3f 75%, #2f2f2f 100%),
     url('assets/button.png');
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -635,7 +635,7 @@ input[type="text"]::placeholder {
   padding: 0.25rem 0.5rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.25rem;
+  border-radius: 0rem;
   color: #fff;
   font-size: 0.875rem;
   text-align: center;
@@ -650,7 +650,7 @@ input[type="text"]::placeholder {
 .activity-progress {
   background: rgba(255, 255, 255, 0.15);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -671,7 +671,7 @@ input[type="text"]::placeholder {
   padding: 0.5rem 1rem;
   background: rgba(239, 68, 68, 0.3);
   border: 1px solid rgba(239, 68, 68, 0.5);
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -686,7 +686,7 @@ input[type="text"]::placeholder {
   height: 12px;
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(48, 48, 48, 0.5);
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   overflow: hidden;
   margin-bottom: 0.5rem;
 }
@@ -715,7 +715,7 @@ input[type="text"]::placeholder {
 .inventory-item {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1rem;
   text-align: center;
 }
@@ -753,7 +753,7 @@ input[type="text"]::placeholder {
 .equipment-slot {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1.5rem;
   text-align: center;
   transition: all 0.3s;
@@ -807,7 +807,7 @@ input[type="text"]::placeholder {
   padding: 0.5rem 1rem;
   background: rgba(239, 68, 68, 0.3);
   border: 1px solid rgba(239, 68, 68, 0.5);
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   color: #fff;
   font-size: 0.75rem;
   cursor: pointer;
@@ -836,7 +836,7 @@ input[type="text"]::placeholder {
 .equipment-item {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1rem;
   text-align: center;
   cursor: pointer;
@@ -886,7 +886,7 @@ input[type="text"]::placeholder {
 .modal-content {
   background: rgba(20, 20, 20, 0.95);
   backdrop-filter: blur(10px);
-  border-radius: 1rem;
+  border-radius: 0rem;
   border: 2px solid rgba(255, 255, 255, 0.2);
   max-width: 500px;
   width: 90%;
@@ -941,7 +941,7 @@ input[type="text"]::placeholder {
 .modal-equipment-item {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.75rem;
+  border-radius: 0rem;
   padding: 1rem;
   text-align: center;
   cursor: pointer;
@@ -980,7 +980,7 @@ input[type="text"]::placeholder {
   padding: 0.75rem;
   background: rgba(239, 68, 68, 0.3);
   border: 1px solid rgba(239, 68, 68, 0.5);
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -1005,12 +1005,12 @@ input[type="text"]::placeholder {
 
 #combatLog::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  border-radius: 0px;
 }
 
 #combatLog::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  border-radius: 0px;
 }
 
 #combatLog::-webkit-scrollbar-thumb:hover {
