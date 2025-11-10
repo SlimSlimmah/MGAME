@@ -277,7 +277,7 @@ export function handlePlayerDefeat() {
   document.getElementById('combatActiveScreen').style.display = 'none';
   document.getElementById('combatResultScreen').style.display = 'block';
   
-  document.getElementById('combatResultIcon').textContent = '<img src="assets/died.png" height="64" width="64">';
+  document.getElementById('combatResultIcon').textContent = '';
   document.getElementById('combatResultTitle').textContent = 'Defeated!';
   document.getElementById('combatResultMessage').textContent = `You were defeated by a Level ${combatState.enemyLevel} ${combatState.enemyType.name}.`;
   document.getElementById('resultVictories').textContent = combatState.victories;
@@ -292,7 +292,7 @@ export function retreatFromCombat() {
   document.getElementById('combatActiveScreen').style.display = 'none';
   document.getElementById('combatResultScreen').style.display = 'block';
   
-  document.getElementById('combatResultIcon').textContent = '<img src="assets/home.png" height="64" width="64">';
+  document.getElementById('combatResultIcon').textContent = '';
   document.getElementById('combatResultTitle').textContent = 'Retreated Safely';
   document.getElementById('combatResultMessage').textContent = 'You managed to escape back to safety.';
   document.getElementById('resultVictories').textContent = combatState.victories;
