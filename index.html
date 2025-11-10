@@ -145,7 +145,7 @@
               </div>
               <div class="activities">
                 <button class="activity-btn" onclick="startGathering('sticks')">
-                  <span class="activity-icon"><img src="assets/sticks.png" height="16" width="16"></span>
+                  <span class="activity-icon"><img src="assets/sticks.png" height="24" width="24"></span>
                   <span class="activity-name">Gather Sticks</span>
                   <span class="activity-time">5s</span>
                 </button>
@@ -172,7 +172,7 @@
               </div>
               <div class="activities">
                 <button class="activity-btn" onclick="startGathering('minnows')">
-                  <span class="activity-icon"><img src="assets/minnows.png" height="16" width="16"></span>
+                  <span class="activity-icon"><img src="assets/minnows.png" height="24" width="24"></span>
                   <span class="activity-name">Catch Minnows</span>
                   <span class="activity-time">5s</span>
                 </button>
@@ -199,7 +199,7 @@
               </div>
               <div class="activities">
                 <button class="activity-btn" onclick="startGathering('stones')">
-                  <span class="activity-icon"><img src="assets/stones.png" height="16" width="16"></span>
+                  <span class="activity-icon"><img src="assets/stones.png" height="24" width="24"></span>
                   <span class="activity-name">Gather Stones</span>
                   <span class="activity-time">5s</span>
                 </button>
@@ -226,8 +226,8 @@
               </div>
               <div class="activities">
                 <button class="activity-btn" onclick="startGathering('rabbitSkin')">
-                  <span class="activity-icon">🐰</span>
-                  <span class="activity-name">Hunt Rabbit</span>
+                  <span class="activity-icon"><img src="assets/rabbitskins.png" height="24" width="24"></span>
+                  <span class="activity-name">Hunt Rabbit Skins</span>
                   <span class="activity-time">5s</span>
                 </button>
               </div>
@@ -243,7 +243,7 @@
           <div class="skill-section collapsible">
             <div class="skill-header" onclick="toggleSkillSection(this)">
               <div class="skill-info">
-                <span class="skill-icon">🍳</span>
+                <span class="skill-icon"><img src="assets/cooking.png" height="32" width="32"></span>
                 <div>
                   <div class="skill-name">Cooking</div>
                   <div class="skill-level">Level <span id="cookingLevel">1</span></div>
@@ -260,10 +260,10 @@
             <div class="activities">
               <div class="activity-with-quantity">
                 <button class="activity-btn" onclick="startProcessing('cookedMinnows')">
-                  <span class="activity-icon">🍖</span>
+                  <span class="activity-icon"><img src="assets/cookedminnows.png" height="24" width="24"></span>
                   <div class="activity-info">
                     <span class="activity-name">Cook Minnows</span>
-                    <span class="activity-recipe">Requires: 1 🐟</span>
+                    <span class="activity-recipe">Requires: 1 <img src="assets/minnows.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">5s</span>
                 </button>
@@ -279,7 +279,7 @@
           <div class="skill-section collapsible">
             <div class="skill-header" onclick="toggleSkillSection(this)">
               <div class="skill-info">
-                <span class="skill-icon">🔨</span>
+                <span class="skill-icon"><img src="assets/forging.png" height="32" width="32"></span>
                 <div>
                   <div class="skill-name">Forging</div>
                   <div class="skill-level">Level <span id="forgingLevel">1</span></div>
@@ -296,10 +296,10 @@
             <div class="activities">
               <div class="activity-with-quantity">
                 <button class="activity-btn" onclick="startProcessing('stoneSword')">
-                  <span class="activity-icon">⚔️</span>
+                  <span class="activity-icon"><img src="assets/stonesword.png" height="24" width="24"></span>
                   <div class="activity-info">
                     <span class="activity-name">Forge Stone Sword</span>
-                    <span class="activity-recipe">Requires: 1 🪵, 2 🪨</span>
+                    <span class="activity-recipe">Requires: 1 <img src="assets/sticks.png" height="24" width="24">, 2 <img src="assets/stones.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">10s</span>
                 </button>
@@ -310,10 +310,10 @@
               </div>
               <div class="activity-with-quantity">
                 <button class="activity-btn" onclick="startProcessing('stonePickaxe')">
-                  <span class="activity-icon">⛏️</span>
+                  <span class="activity-icon"><img src="assets/stonepickaxe.png" height="24" width="24"></span>
                   <div class="activity-info">
                     <span class="activity-name">Forge Stone Pickaxe</span>
-                    <span class="activity-recipe">Requires: 1 🪵, 2 🪨</span>
+                    <span class="activity-recipe">Requires: 1 <img src="assets/sticks.png" height="24" width="24">, 2 <img src="assets/stones.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">10s</span>
                 </button>
@@ -329,7 +329,7 @@
           <div class="skill-section collapsible">
             <div class="skill-header" onclick="toggleSkillSection(this)">
               <div class="skill-info">
-                <span class="skill-icon">🧵</span>
+                <span class="skill-icon"><img src="assets/leatherworking.png" height="32" width="32"></span>
                 <div>
                   <div class="skill-name">Leatherworking</div>
                   <div class="skill-level">Level <span id="leatherworkingLevel">1</span></div>
@@ -346,10 +346,10 @@
             <div class="activities">
               <div class="activity-with-quantity">
                 <button class="activity-btn" onclick="startProcessing('leather')">
-                  <span class="activity-icon">🟤</span>
+                  <span class="activity-icon"><img src="assets/leather.png" height="24" width="24"></span>
                   <div class="activity-info">
                     <span class="activity-name">Craft Leather</span>
-                    <span class="activity-recipe">Requires: 2 🐇</span>
+                    <span class="activity-recipe">Requires: 2 <img src="assets/rabbitskins.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">5s</span>
                 </button>
@@ -363,7 +363,7 @@
                   <span class="activity-icon">🪖</span>
                   <div class="activity-info">
                     <span class="activity-name">Craft Leather Helmet</span>
-                    <span class="activity-recipe">Requires: 2 🟤</span>
+                    <span class="activity-recipe">Requires: 2 <img src="assets/leather.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">8s</span>
                 </button>
@@ -377,7 +377,7 @@
                   <span class="activity-icon">🦺</span>
                   <div class="activity-info">
                     <span class="activity-name">Craft Leather Chestplate</span>
-                    <span class="activity-recipe">Requires: 4 🟤</span>
+                    <span class="activity-recipe">Requires: 4 <img src="assets/leather.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">10s</span>
                 </button>
@@ -391,7 +391,7 @@
                   <span class="activity-icon">👖</span>
                   <div class="activity-info">
                     <span class="activity-name">Craft Leather Leggings</span>
-                    <span class="activity-recipe">Requires: 3 🟤</span>
+                    <span class="activity-recipe">Requires: 3 <img src="assets/leather.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">8s</span>
                 </button>
@@ -405,7 +405,7 @@
                   <span class="activity-icon">🧤</span>
                   <div class="activity-info">
                     <span class="activity-name">Craft Leather Gloves</span>
-                    <span class="activity-recipe">Requires: 1 🟤</span>
+                    <span class="activity-recipe">Requires: 1 <img src="assets/leather.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">6s</span>
                 </button>
@@ -419,7 +419,7 @@
                   <span class="activity-icon">👢</span>
                   <div class="activity-info">
                     <span class="activity-name">Craft Leather Boots</span>
-                    <span class="activity-recipe">Requires: 2 🟤</span>
+                    <span class="activity-recipe">Requires: 2 <img src="assets/leather.png" height="24" width="24"></span>
                   </div>
                   <span class="activity-time">6s</span>
                 </button>
