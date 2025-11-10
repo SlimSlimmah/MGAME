@@ -534,13 +534,14 @@ input[type="text"]::placeholder {
 .xp-bar {
   height: 8px;
   background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(48, 48, 48, 0.5);
   border-radius: 1rem;
   overflow: hidden;
 }
 
 .xp-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+  background: linear-gradient(90deg, #fdf366 0%, #fdba00 100%);
   transition: width 0.3s;
 }
 
