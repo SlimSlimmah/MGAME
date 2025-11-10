@@ -1,6 +1,6 @@
 // Equipment management and stats calculation
 
-import { CLASS_INFO, EQUIPMENT_STATS, RARITY_TIERS } from './constants.js';
+import { CLASS_INFO, EQUIPMENT_STATS, RARITY_TIERS, PROCESSING_ACTIVITIES } from './constants.js';
 import { gameData } from './game-state.js';
 import { saveGame } from './storage.js';
 

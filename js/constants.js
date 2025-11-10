@@ -205,7 +205,7 @@ export const GATHERING_ACTIVITIES = {
     skill: 'mining',
     duration: 5,
     icon: '<img src="assets/stones.png" height="32" width="32">',
-    resourceIcon: '<img src="assets/sticks.png" height="24" width="24">',
+    resourceIcon: '<img src="assets/stones.png" height="24" width="24">',
     resourceName: 'Stones',
     xpGain: 10,
     sellValue: 1
